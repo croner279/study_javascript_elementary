@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <title>HTML !DOCTYPE declaration</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+
+<body>
+
+    <p>이 문서는 HTML 문서입니다.</p>
+
+</body>
+
+<div class="alert-box" , id="alert">
+    <p id="title">알림창임</p>
+    <button id="close">닫기</button>
+</div>
+
+<button onclick="입력('아이디')">버튼1</button>
+<button onclick="입력('비번')">버튼2</button>
+
+<script>
+
+    // document.getElementById("close") 얘를 'click' 하면 뒤의 function을 실행해준다! tag 내의 onclick과 동일 기능
+    document.getElementById("close").addEventListener('click', function () {
+        document.getElementById('alert').style.display = 'none';
+    });
+
+
+    function 알림창닫기(x) {
+        document.getElementById('alert').style.display = x;
+    }
+
+
+    function 입력(x) {
+        document.getElementById('title').innerHTML = x + '입력하셈';
+        // getElementsByClassName('title')[0] -> Id 말고 Class로도 끌어올 수 있는데, class name이 여기저기 중복해서 사용될 수 있으며, 중복된 것을 다 찾아오므로 인덱싱이 꼭 필요. 
+        document.getElementById('alert').style.display = 'block';
+    }
+
+
+
+</script>
+
+</html>
