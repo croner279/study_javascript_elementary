@@ -1,0 +1,8 @@
+.alert-box {
+    background-color: skyblue;
+    padding: 20px;
+    color: wheat;
+    border-radius: 5px;
+    display: none;
+    /* block 하면 숨김 안됨. noneㅣㅇ 숨김임 */
+}
