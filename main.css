@@ -6,3 +6,11 @@
     display: none;
     /* block 하면 숨김 안됨. noneㅣㅇ 숨김임 */
 }
+
+.list-group {
+    display: none;
+}
+
+.show {
+    display: block;
+}
