@@ -22,6 +22,16 @@
 
 <body>
 
+    <!-- navbar 위에 붙여야 navbar까지 가리는 모달창 뜸. 모든 html 요소 앞에 있어! -->
+    <div class="black-bg">
+        <div class="white-bg">
+            <h4>로그인하세요</h4>
+            <button class="btn btn-danger" id="close">닫기</button>
+        </div>
+    </div>
+
+
+
     <nav class="navbar navbar-light bg-light">
         <div class="container-fluid">
             <span class="navbar-brand">Navbar</span>
@@ -30,6 +40,7 @@
             </button>
         </div>
     </nav>
+
 
     <ul class="list-group" id="test1">
         <li class="list-group-item">An item</li>
@@ -40,48 +51,24 @@
     </ul>
 
     <p class="hello">안녕</p>
-    <p class="hello">안녕</p>
-    <p class="hello">안녕</p>
     <button id="test-btn">버튼</button>
 
-    <button class="login_button"> 로그인버튼</button>
-
-    <div class="black-bg">
-        <div class="white-bg">
-            <h4>로그인하세요</h4>
-            <button class="btn btn-danger" id="close">닫기</button>
-        </div>
-    </div>
+    <button id="login" class="login_button"> 로그인</button>
 
 
     <script>
-
-        //위, 아래 모두 같은 코드임. 아래는 jQuery의 축약버전
-        // document.querySelector('.hello').innerHTML = '바보';
-        $('.hello').html('바보');
-        $('.hello').css('color', 'red')
-        $('.hello').addClass('show') //외에도 removeclass(), toggleclass()
-        $('.hello').html('바보똥개'); // 바닐라 JS에서는 getElementsByClassnameAll해서 인덱싱 후 하나하나 다바꿔줘야 하는데, jQuery에서는 $로 한큐에 가능
-
-
-        // .on 이 event Listner임. 
-        $('#test-btn').on('click', function () {
-            $('.hello').fadeOut()
+        //로그인 버튼 누르면 모달창 띄워줘, show-modal 클래스를 저기 뒤에 붙여주셈
+        document.getElementById('login').addEventListener('click', function () {
+            document.querySelector('.black-bg').classList.add('show-modal')
         })
-        document.getElementsByClassName('navbar-toggler')[0].addEventListener('click', function () {
-            document.getElementsByClassName('list-group')[0].classList.toggle('show');
+        // jQuery Code ↓
+        // $('#login').on('click',function(){$('.black-bg').addClass('show-modal');})
+        document.getElementById('close').addEventListener('click', function () {
+            document.querySelector('.black-bg').classList.remove('show-modal')
         })
-
-        document.getElementsByClassName('login_button')[0].addEventListener('click', function () {
-            document.getElementsByClassName('black-bg')[0].style.display = 'block';
-        })
-        document.getElementsByClassName('btn btn-danger')[0].addEventListener('click', function () {
-            document.getElementsByClassName('black-bg')[0].style.display = 'none';
-        })
-
-
-
     </script>
+
+
 
 
 

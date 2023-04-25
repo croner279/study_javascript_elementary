@@ -22,7 +22,19 @@
     background: rgba(0, 0, 0, 0.5);
     z-index: 5;
     padding: 30px;
-    display: none;
+    /* 애니메이션줄 때 display : none 대신 visibility: hidden; display:none은 html에서 아예 없애버리는 점에서 차이*/
+    visibility: hidden;
+    opacity: 0;
+    /* 모든 CSS 속성이 바뀔 때 1초에 걸쳐서 서서히 변경되게 해주세요 */
+    transition: all 1s;
+}
+
+
+
+
+.show-modal {
+    visibility: visible;
+    opacity: 1;
 }
 
 .white-bg {
