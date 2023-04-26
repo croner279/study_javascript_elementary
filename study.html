@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        function game(input_number) {
+            if (input_number % 9 == 0) {
+                console.log('박수 박수!!');
+            } else if (input_number % 3 == 0) {
+                console.log('박수!!');
+            } else {
+                console.log('통과!!');
+            }
+        }
+
+        game(7);
+        game(9);
+        game(6);
+
+
+    </script>
+
+
+</body>
+
+</html>

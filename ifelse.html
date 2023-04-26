@@ -16,11 +16,16 @@
 
 
     <title>Hello, world!</title>
+
+
+
 </head>
 
 
 
 <body>
+
+    </script>
 
     <!-- navbar 위에 붙여야 navbar까지 가리는 모달창 뜸. 모든 html 요소 앞에 있어! -->
     <div class="black-bg">
@@ -49,17 +54,33 @@
 
         //form을 불러와라. 거기서 type = submit 인 녀석
         $('form').on('submit', function (e) {
-            if (document.getElementById("idinput").value == '') {
+            let id입력값 = document.getElementById('idinput').value
+            let pw입력값 = document.getElementById('pwinput').value
+            if (id입력값 == '') {
                 e.preventDefault();
                 alert('아이디입력안함');
-            } else if (document.getElementById("pwinput").value == '') {
+            } else if (!/\S+@\S+.\S+/.test(id입력값)) {
                 e.preventDefault();
-                alert('비번입력안함');
-            } else if (document.getElementById("pwinput").value.length < 6) {
+                alert('이메일형식아님');
+            } else if (!/[A-Z]/.test(pw입력값)) {
                 e.preventDefault();
-                alert('비번더 길게 작성좀');
+                alert('비번에 대문자 포함좀');
             }
         });
+
+
+        //     else if (document.getElementById("pwinput").value == '') {
+        //         e.preventDefault();
+        //         alert('비번입력안함');
+        //     } else if (document.getElementById("pwinput").value.length < 6) {
+        //         e.preventDefault();
+        //         alert('비번더 길게 작성좀');
+        //     }
+        // });
+
+        // $('#idinput').on('input', function () {
+        //     console.log('안녕')
+        // })
 
 
         // 이렇게도 됩니다.
@@ -75,12 +96,42 @@
 
     <nav class="navbar navbar-light bg-light">
         <div class="container-fluid">
-            <span class="navbar-brand">Navbar</span>
+            <span class="navbar-brand">Hello?</span>
+            <span class="badge bg-dark">Dark 🔄</span>
             <button class="navbar-toggler" type="button">
                 <span class="navbar-toggler-icon"></span>
             </button>
         </div>
     </nav>
+
+    <script>
+
+        var count = 0;
+
+        $('.badge').on('click', function () {
+            count += 1;
+            // count++도 동일
+            console.log(count);
+
+            if (count % 2 == 0) {
+                $('.badge').html('Light 🔄');
+            } else {
+                $('.badge').html('Dark 🔄');
+            }
+        })
+
+        let 나이 = 30;
+        const 출신지역 = '목포';
+
+        // badge 홀수 회 클릭 시 내부 글자를 Light로 변경
+        // badge 짝수 회 클릭 시 내부 글자를 Dark로 변경....
+        // 그리고, 클릭횟수 기억해놔.
+
+
+
+
+    </script>
+
 
 
     <ul class="list-group" id="test1">
@@ -109,9 +160,27 @@
         })
     </script>
 
+    <div class="alert alert-danger">
+        <span id="five_seconds">5</span>초 이내 구매시 사은품 증정!
+    </div>
 
+    <script>
+        // callback함수, millisecond(1000=1초). N초 후에 callback함수를 실행해ㅜ세요
 
+        var count = 5;
 
+        var countdown = setInterval(function () {
+            count -= 1;
+            if (count >= 0) {
+                document.querySelector('#five_seconds').innerHTML = count;
+            } else {
+                // 타이머 중지
+                clearInterval(countdown);
+                $('.alert').hide();
+            }
+        }, 1000);
+
+    </script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
