@@ -94,7 +94,7 @@
 
     </script>
 
-    <nav class="navbar navbar-light bg-light">
+    <nav class="navbar navbar-light bg-light" style="position:fixed; top:0; width: 100%; ">
         <div class="container-fluid">
             <span class="navbar-brand">Hello?</span>
             <span class="badge bg-dark">Dark 🔄</span>
@@ -104,30 +104,25 @@
         </div>
     </nav>
 
+
+
+
+
     <script>
 
-        var count = 0;
+        // 스크롤바를 100px 이상 내리면 폰트사이즈를 작게 한다.
+        // 그 미만으로 내리면 폰트 사이즈는 크게 유지.
 
-        $('.badge').on('click', function () {
-            count += 1;
-            // count++도 동일
-            console.log(count);
 
-            if (count % 2 == 0) {
-                $('.badge').html('Light 🔄');
+
+        $(window).on('scroll', function () {
+            if ($(window).scrollTop() > 15) {
+                $('.navbar-brand').css('font-size', '30px');
+                console.log($(window).scrollTop());
             } else {
-                $('.badge').html('Dark 🔄');
+                $('.navbar-brand').css('font-size', '20px');
             }
         })
-
-        let 나이 = 30;
-        const 출신지역 = '목포';
-
-        // badge 홀수 회 클릭 시 내부 글자를 Light로 변경
-        // badge 짝수 회 클릭 시 내부 글자를 Dark로 변경....
-        // 그리고, 클릭횟수 기억해놔.
-
-
 
 
     </script>
@@ -142,6 +137,7 @@
         <li class="list-group-item">And a fifth one</li>
     </ul>
 
+    <div style="height: 100px;"></div>
     <p class="hello">안녕</p>
     <button id="test-btn">버튼</button>
 
@@ -164,6 +160,9 @@
         <span id="five_seconds">5</span>초 이내 구매시 사은품 증정!
     </div>
 
+
+
+
     <script>
         // callback함수, millisecond(1000=1초). N초 후에 callback함수를 실행해ㅜ세요
 
@@ -180,7 +179,113 @@
             }
         }, 1000);
 
+
+
     </script>
+
+    <!-- div박스의 스크롤을 모두 내렸을 때 alert창이 나타나도록 코드를 짜려고 한다.  -->
+
+    <div class="lorem" style="width: 200px; height: 100px; overflow-y: scroll">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae voluptas voluptatum minus praesentium fugit
+        debitis at, laborum ipsa itaque placeat sit, excepturi eius. Nostrum perspiciatis, eligendi quae consectetur
+        praesentium exercitationem.
+    </div>
+
+    <script>
+        $('.lorem').on('scroll', function () {
+            var 스크롤양 = document.querySelector('.lorem').scrollTop;
+            var 화면에보이는높이 = document.querySelector('.lorem').clientHeight;
+            var div높이 = document.querySelector('.lorem').scrollHeight;
+            if (Math.abs(스크롤양 + 화면에보이는높이 - div높이) < 5) {
+                alert('다봤음')
+            }
+        })
+    </script>
+
+    <div style="height: 300px;"></div>
+
+
+    <div style="overflow:hidden">
+        <div class="slide-container">
+            <div class="slide-box">
+                <img src="car1.png">
+            </div>
+            <div class="slide-box">
+                <img src="car2.png">
+            </div>
+            <div class="slide-box">
+                <img src="car3.png">
+            </div>
+        </div>
+    </div>
+
+    <button class="slide-1">1</button>
+    <button class="slide-2">2</button>
+    <button class="slide-3">3</button>
+    <button class="slide-next">다음</button>
+    <button class="slide-previous">이전</button>
+
+    <script>
+
+        let slide_count = 0;
+
+        $('.slide-1').on('click', function () {
+            $('.slide-container').css('transform', 'translateX(0vw)');
+            slide_count = 0;
+        });
+        $('.slide-2').on('click', function () {
+            $('.slide-container').css('transform', 'translateX(-100vw)');
+            slide_count = 1;
+        });
+        $('.slide-3').on('click', function () {
+            $('.slide-container').css('transform', 'translateX(-200vw)');
+            slide_count = 2;
+        });
+        $('.slide-next').on('click', function () {
+            slide_count += 1;
+            if (slide_count > 2) {
+                slide_count = 2;
+            }
+            $('.slide-container').css('transform', `translateX(-${slide_count * 100}vw)`);
+        });
+        $('.slide-previous').on('click', function () {
+            slide_count -= 1;
+            if (slide_count < 0) {
+                slide_count = 0;
+            }
+            $('.slide-container').css('transform', `translateX(-${slide_count * 100}vw)`);
+        });
+
+
+        function 함수(a, b) {
+            seconds = 60 * a + b;
+            console.log(seconds)
+            return seconds * 1000;
+        }
+
+        console.log(함수(1, 30))
+
+        function 함수2(a, b) {
+            var result = a * 0.9;
+            if (b == true) {
+                return result - 1.5;
+            } else {
+                return result
+            }
+        }
+
+        console.log(함수2(70, false))
+
+
+        /*     var 지금사진 = 1;
+        
+                $('.next').on('click', function () {
+                    $('.slide-container').css('transform', 'translateX(-' + 지금사진 + '00vw)');
+                    지금사진 += 1;
+                }) */
+
+    </script>
+
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
