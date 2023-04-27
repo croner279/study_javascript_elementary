@@ -167,8 +167,20 @@
         document.getElementById('close').addEventListener('click', function () {
             document.querySelector('.black-bg').classList.remove('show-modal')
         })
-    </script>
 
+        // document.querySelector()랑 $() 결과는 다르게 생김.
+        $('.black-bg').on('click', function (e) {
+            if (e.target == document.querySelector('.black-bg')) {
+                document.querySelector('.black-bg').classList.remove('show-modal')
+            }
+        })
+    </script>
+    <!-- 
+            e.target; //유저가 실제로 누른 요소
+            e.currentTarget; //이벤트리스너 달린 곳 (또는 this)
+            e.preventDefault(); // 이벤트의 기본 동작 막기. 가령 form태그의 submit이라면, submit 안된것처럼 해줏요 하는 것임. 
+            e.stopPropagation(); // 내 상위 요소로 이벤트 버블링 되는 것 막음
+            $('.black-bg').removeClass('show-modal'); -->
     <div class="alert alert-danger">
         <span id="five_seconds">5</span>초 이내 구매시 사은품 증정!
     </div>
