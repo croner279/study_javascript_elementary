@@ -63,6 +63,92 @@
         }
     </style>
 
+    <div class="container mt-3">
+        <div class="card p-3">
+            <span class="item-name">상품명</span>
+            <span class="item-price">가격</span>
+        </div>
+    </div>
+
+
+    <script>
+        var car2 = { name: '소나타', price: 50000 };
+
+        /* document.querySelector('.item-name').innerHTML=car2['name'];
+        document.querySelector('.item-price').innerHTML=car2.price; // 이건 변수 넣기는 불가능하다는 점만 알아둬라. 프로퍼티 접근에는 문제 없음 왠만하면
+     */
+        var car3 = { name: '소나타', price: [50000, 3000, 4000] };
+
+        document.querySelector('.item-price').innerHTML = car3.price[0]
+
+    </script>
+
+    <form class="container my-5 form-group">
+        <p>상품선택</p>
+        <select class="form-select mt-2">
+            <option>모자</option>
+            <option>셔츠</option>
+            <option>바지</option>
+        </select>
+        <select class="form-select mt-2 form-hide">
+            <option>95</option>
+            <option>100</option>
+            <option>105</option>
+        </select>
+    </form>
+
+    <div id="test">
+
+    </div>
+
+    <script>
+
+        // pnats 데이터 갯수만큼 <option> 생성해주세요
+        var pants = [28, 30, 32];
+        var shirts = [95, 100, 105];
+
+        $('.form-select').change(function (e) {
+            if (e.currentTarget.value == '셔츠') {
+                $('.form-select').eq(1).removeClass('form-hide');
+                $('.form-select').eq(1).html('');
+
+                // forEach는 array에 붙일 수 있는 반복문임. 각 원소에 대한 반복
+                // param 1은 array 안의 data, param2는 0부터 1씩 증가하는 정수(생략가능)
+                shirts.forEach(function (data) {
+                    $('.form-select').eq(1).append(`<option>${data}</option>`);
+                })
+            } else if (e.currentTarget.value == '바지') {
+                $('.form-select').eq(1).removeClass('form-hide');
+                $('.form-select').eq(1).html('');
+                //  function()  비슷  (data) => arrow function
+                // (주의) arrow function 쓰면 함수 안의 this값이 달라짐. arrow function 안에 쓰면 바깥에 있던 this를 그대로 가져다 씀
+                //  그냥 function 안에서 쓰면 this가 알맞게 재정의 됨. e.currentarget 등 쓰려면 arrow function 쓰면 안됨.
+                pants.forEach((data) => {
+                    $('.form-select').eq(1).append(`<option>${data}</option>`);
+                })
+
+                /* for (var i=0 ; i<pants.length ; i++){
+                    // option 태그 생성해주세요~
+                } */
+            }
+            else {
+                $('.form-select').eq(1).addClass('form-hide');
+            }
+
+        })
+
+        // 반복문의 주요 용도 : array, object 데이터 전부 꺼낼 때
+
+        var obj = { name: 'kim', age: 20 }
+
+        for (var key in obj) {
+            console.log(obj[key]);
+        }
+
+    </script>
+
+
+
     <div class="container mt-5">
         <ul class="list">
             <li class="tab-button">Products</li>
